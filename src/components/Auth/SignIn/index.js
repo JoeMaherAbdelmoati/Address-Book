@@ -115,7 +115,7 @@ class SignIn extends Component {
                                 </Grid>
                             </Grid>
                             <div>
-                                {authError}
+                                {authError&&authError+' : Email or Password is incorrect'}
                             </div>
                             <div className="text-center">
                                 <Button variant="outlined" type="submit" disabled={isSubmitting}
