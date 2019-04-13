@@ -50,7 +50,8 @@ class MediaCard extends React.Component {
             fetchContact,
             auth,
         } = this.props;
-        fetchContact(auth.uid);
+        if(auth.uid)
+            fetchContact(auth.uid);
     }
 
     handleDelete = (id) => {
