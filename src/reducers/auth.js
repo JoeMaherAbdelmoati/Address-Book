@@ -4,6 +4,7 @@ import {
     SIGNOUT_SUCCESS,
     SIGNUP_SUCCESS,
     SIGNUP_ERROR,
+    CLEAR_LOGIN_ERROR,
 } from '../actions';
 
 
@@ -41,6 +42,11 @@ export const auth = (state = initState, action) => {
             return {
                 ...state,
                 authError: action.err.message
+            };
+            case CLEAR_LOGIN_ERROR:
+            return {
+                ...state,
+                authError: null
             };
 
         default:

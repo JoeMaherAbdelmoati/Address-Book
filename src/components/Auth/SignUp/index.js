@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {signUp} from '../../../actions'
+import {signUp,clearAuthError} from '../../../actions'
 import {Redirect} from 'react-router-dom'
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
@@ -55,6 +55,9 @@ const signUpSchema = Yup.object().shape({
 });
 
 class SignUp extends Component {
+    componentWillUnmount() {
+        this.props.clearAuthError();
+    }
     render() {
         const { authError, auth, classes, signUp } = this.props;
         if (auth.uid) return <Redirect to='/home' />;
@@ -189,7 +192,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        signUp: (creds) => dispatch(signUp(creds))
+        signUp: (creds) => dispatch(signUp(creds)),
+        clearAuthError: () => dispatch(clearAuthError())
     }
 };
 

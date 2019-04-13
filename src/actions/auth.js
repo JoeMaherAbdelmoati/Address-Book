@@ -6,6 +6,7 @@ import {
     SIGNUP_SUCCESS,
     SIGNUP_ERROR,
     CLEAR_CONTACT,
+    CLEAR_LOGIN_ERROR,
 } from '../actions';
 
 export const signIn = (credentials) => {
@@ -42,5 +43,10 @@ export const signUp = (newUser) => {
         }).catch((err) => {
             dispatch({type: SIGNUP_ERROR, err});
         });
+    }
+};
+export const clearAuthError= () => {
+    return (dispatch) => {
+            dispatch({type: CLEAR_LOGIN_ERROR});
     }
 };

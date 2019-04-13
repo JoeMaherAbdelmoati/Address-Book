@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {signIn} from '../../../actions'
+import {signIn, clearAuthError} from '../../../actions'
 import {Redirect} from 'react-router-dom'
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
@@ -10,6 +10,7 @@ import {compose} from 'redux';
 import {withStyles} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import {renderErrorMessage} from '../../../layouts/RenderFormError'
+import Typography from '@material-ui/core/Typography';
 
 
 
@@ -48,6 +49,10 @@ const signInSchema = Yup.object().shape({
 });
 
 class SignIn extends Component {
+    componentWillUnmount() {
+        this.props.clearAuthError();
+    }
+
     render() {
         const { authError, auth, classes, signIn } = this.props;
         if (auth.uid) return <Redirect to='/home' />;
@@ -115,7 +120,12 @@ class SignIn extends Component {
                                 </Grid>
                             </Grid>
                             <div>
-                                {authError&&authError+' : Email or Password is incorrect'}
+                                <Typography variant="h6"
+                                            className={classes.error}
+                                            gutterBottom>
+                                    {authError&&authError+' : Email or Password is incorrect'}
+                                </Typography>
+
                             </div>
                             <div className="text-center">
                                 <Button variant="outlined" type="submit" disabled={isSubmitting}
@@ -141,7 +151,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        signIn: (creds) => dispatch(signIn(creds))
+        signIn: (creds) => dispatch(signIn(creds)),
+        clearAuthError: () => dispatch(clearAuthError())
     }
 };
 
