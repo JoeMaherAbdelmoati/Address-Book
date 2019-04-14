@@ -39,7 +39,7 @@ const innerForm = (props) => {
         <Grid container spacing={24}>
             <ImageCropper image={image} onProcessImage={handleProcessImage} processedImage={base64Image}/>
         </Grid>
-        <div className='col-6 mx-auto'>
+        <div className='col-12 col-md-6 mx-auto'>
             <Grid item xs={12}>
                 <Field name="firstName" render={({field}) => (
                     <TextField
