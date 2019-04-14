@@ -15,6 +15,7 @@ const styles = {
         flexGrow: 1,
     },
     grow: {
+        cursor:'pointer',
         flexGrow: 1,
     },
     menuButton: {

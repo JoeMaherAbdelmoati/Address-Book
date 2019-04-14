@@ -74,7 +74,7 @@ class SignIn extends Component {
                         isSubmitting,
                     } = props;
                     return (
-                        <div className='col-12 text-center'>
+                        <div className='col-6 mx-auto  text-center'>
                             <h3>Sign In</h3>
                             <Form>
                             <Grid container spacing={24}>

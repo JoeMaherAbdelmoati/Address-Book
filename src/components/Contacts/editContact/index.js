@@ -6,6 +6,8 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 import 'react-image-crop/dist/ReactCrop.css';
 import InnerForm from '../InnerForm';
+import {Loading} from "../../../layouts/Loading";
+import Typography from '@material-ui/core/Typography';
 
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -46,8 +48,14 @@ class EditContact extends Component {
         const {authError, auth, classes, editContact, history, match, contact} = this.props;
         const {base64Image} = this.state;
         if (!auth.uid) return <Redirect to='/signIn'/>;
+        if(contact.errorMessage)
+            return <Typography variant="h6"
+                               className={'error'}
+                               gutterBottom>
+                {contact.errorMessage}
+            </Typography>
         if (contact.isLoading || !contact.selectedContact)
-            return <h3>loading</h3>
+            return <Loading/>
         return (<Formik
                 initialValues={
                     {

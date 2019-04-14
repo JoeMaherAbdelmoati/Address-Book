@@ -99,7 +99,9 @@ class MediaCard extends React.Component {
             return (
                 <div key={item.id} className='col-12 col-sm-6 col-lg-3 py-2'>
                 <Card  className={classes.card + ' custom-shadow mx-4'}>
-                    <CardActionArea className={'py-3'} component="div">
+                    <CardActionArea onClick={() => {
+                        this.handleOpenDetails(item)
+                    }} className={'py-3'} component="div">
                         <CardMedia
                             className={classes.media + ' mx-auto'}
                             image={item.image || "/man-user.png"}

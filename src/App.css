@@ -65,3 +65,7 @@
   padding: 0 30px;
   animation-delay: .75s;
 }
+.row .error{
+  color: #b71c1c;
+  padding: 0px 0.4em;
+}

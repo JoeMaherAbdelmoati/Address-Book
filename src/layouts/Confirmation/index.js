@@ -49,7 +49,7 @@ const Confirmation = (props) => {
                     <Typography variant="subtitle1">
                         Are you sure to delete this contact ?
                     </Typography>
-                    <Button onClick={handleConfirm}>
+                    <Button variant="outlined" onClick={handleConfirm}>
                         Yes
                     </Button>
                 </div>

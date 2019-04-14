@@ -49,9 +49,9 @@ const ContactDetails = (props) => {
                     <Typography variant="h6" id="modal-title">
                         Contact Details
                     </Typography>
-                    {contact.image &&
-                    <img alt={'contact'} src={contact.image} className={classes.contactDetailsImage}/>
-                    }
+
+                    <img alt={'contact'} src={contact.image || "/man-user.png"} className={classes.contactDetailsImage}/>
+
                     {contact.firstName &&
                     <Typography variant="subtitle1" >
                         First Name : {contact.firstName}
