@@ -8,4 +8,4 @@
 ### `npm start`  
 
 ## To build app to build folder
-   ###`yarn build`
+   ###  `yarn build`
